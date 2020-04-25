@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "servicesandhttp"
+    }
+  },
+  "defaultProject": "servicesandhttp",
+  "cli": {
+    "analytics": false
+  }
 }
