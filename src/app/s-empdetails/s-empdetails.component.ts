@@ -9,6 +9,8 @@ import { EmpServicesService } from '../emp-services.service';
       <li>{{ emp.id }}. {{ emp.name }} - {{ emp.age }}</li>
     </ul>
 
+    <h2>{{ errorMsg }}</h2>
+
     <h2>Employee Detail from DI</h2>
     <ul *ngFor="let emp of employee2">
       <li>{{ emp.id }}. {{ emp.name }} - {{ emp.age }}</li>
@@ -24,7 +26,6 @@ import { EmpServicesService } from '../emp-services.service';
 //   getEmployees() class method karun services madhe return [] karun array lihaycha
 //  public employee2 = [];
 // --------------------------------------------------------------------------------- //
-
 export class SEmpdetailsComponent implements OnInit {
   public employee1 = [
     { id: 1, name: 'Soni', age: 30 }, //hard coded array
@@ -36,11 +37,17 @@ export class SEmpdetailsComponent implements OnInit {
   // --------------------------------------------------------------------------------- //
 
   public employee2 = [];
-
-  constructor(private empService: EmpServicesService) {
-    // this.employee2 = empService.getEmployees();
+  public errorMsg;
+  constructor(private _empService: EmpServicesService) {
+    // this.employee2 = _empService.getEmployees();
   }
+
   // --------------------------------------------------------------------------------- //
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._empService.getEmployees().subscribe(
+      (data) => (this.employee2 = data),
+      (error) => (this.errorMsg = error)
+    );
+  }
 }

@@ -11,7 +11,7 @@ import { retry, catchError } from 'rxjs/operators';
 // --------------------------------------------------------------------------------- //
 export class EmpServicesService {
   private _url: string = '/assets/data/data.json'; //json file create and get url
-// --------------------------------------------------------------------------------- //
+  // --------------------------------------------------------------------------------- //
 
   constructor(private http: HttpClient) {} //const. parameter
   // --------------------------------------------------------------------------------- //
